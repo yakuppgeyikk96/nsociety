@@ -1,5 +1,5 @@
 import axios from "axios";
-import { deleteItem } from "../utils/localStorageHelper";
+import { deleteItem, getItem } from "../utils/localStorageHelper";
 
 const axiosClient = axios.create({
   baseURL: 'http://localhost:8000/api',
@@ -9,6 +9,19 @@ const axiosClient = axios.create({
   responseType: 'json',
   validateStatus: false
 })
+
+axiosClient.interceptors.request.use((request) => {
+  const { url, headers } = request;
+  const token = getItem("token");
+
+  if (url === '/user/signin') return request;
+
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+
+    return request;
+  }
+});
 
 axiosClient.interceptors.response.use((response) => {
   if (response.status === 401) {

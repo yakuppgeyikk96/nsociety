@@ -1,5 +1,6 @@
-import { createTheme, ThemeProvider } from '@mui/material';
-import React from 'react'
+
+import React from "react";
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import AppWrapper from '../components/app-wrapper';
 import RouterTemplate from '../components/router-template';
 import { AlertProvider } from '../context/alertContext';
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <AlertProvider>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <AppWrapper>
           <RouterTemplate />
         </AppWrapper>
