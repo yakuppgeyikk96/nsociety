@@ -9,6 +9,6 @@ export const savePost = async (post) => {
 
 export const getPostsByUserId = async (userId) => {
   const ObjectId = mongoose.Types.ObjectId
-  const posts = await Post.find({ publisher: ObjectId(userId) })
+  const posts = await Post.find({ user: ObjectId(userId) })
   return posts
 }

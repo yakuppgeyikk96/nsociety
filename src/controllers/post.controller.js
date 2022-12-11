@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 import { savePost, getPostsByUserId } from "../services/post.service.js"
 
 export const createPost = async (req, res) => {
-  const post = req.body
+  const post = { user: req.user._id, ...req.body }
 
   try {
     const newPost = await savePost(post)

@@ -1,29 +1,48 @@
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: [true, 'Title is required'],
-    maxLength: [10, 'The value must be less than 10 character']
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
   },
-  description: {
-    type: String,
-    required: true,
-    maxLength: [100, 'The value must be less than 100 character']
-  },
-  createdAt: {
-    type: Date,
-    default: new Date()
-  },
+  text: String,
+  image: Buffer,
   likes: {
     type: Number,
     default: 0
   },
-  publisher: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+  comments: {
+    type: Number,
+    default: 0
+  },
+  likesFrom: {
+    type: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+      }
+    ],
+    default: []
+  },
+  commentsFrom: {
+    type: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          required: true
+        },
+        text: {
+          type: String,
+          required: true
+        }
+      }
+    ],
+    default: []
   }
+}, {
+  timestamps: true
 })
 
 const Post = mongoose.model('Post', postSchema)
