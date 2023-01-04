@@ -21,7 +21,7 @@ import { Divider, ListItemIcon, ListItemText } from '@mui/material';
 import { signOut } from '../../services/authService';
 import { deleteItem } from '../../utils/localStorageHelper';
 
-export default function Topbar({ open, handleDrawerOpen }) {
+export default function Topbar({ open }) {
   const [openProfileMenu, setOpenProfileMenu] = useState(null);
   const [openMobileMore, setOpenMobileMore] = useState(null);
 
@@ -135,16 +135,6 @@ export default function Topbar({ open, handleDrawerOpen }) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar open={open} position="fixed">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

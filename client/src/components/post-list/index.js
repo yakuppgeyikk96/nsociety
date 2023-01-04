@@ -8,9 +8,7 @@ const PostList = ({ posts }) => {
 
   return (
     <Box component="div">
-      <List disablePadding dense sx={{
-        width: '40%'
-      }}>
+      <List disablePadding dense>
         {
           posts.map((post) => (
             <PostItem key={post._id} post={post} />

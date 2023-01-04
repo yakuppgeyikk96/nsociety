@@ -8,15 +8,6 @@ import DrawerHeader from "../styled-components/DrawerHeader";
 
 const ProtectedLayout = () => {
   const token = getItem('token')
-  const [open, setOpen] = useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   if (!token) {
     return <Navigate to="/auth/login" />
@@ -24,18 +15,24 @@ const ProtectedLayout = () => {
 
   return (
     <Box>
-      <Topbar
-        open={open}
-        handleDrawerOpen={handleDrawerOpen}
-      />
+      <Topbar />
       <Box sx={{ display: 'flex' }}>
         <SideBar
-          open={open}
-          handleDrawerClose={handleDrawerClose}
+          open
         />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
           <DrawerHeader />
-          <Outlet />
+          <Box>
+            <Outlet />
+          </Box>
+        </Box>
+
+        {/* This will be trends section of the page */}
+        <Box component="div" sx={{
+          width: '25rem',
+          background: 'gray'
+        }}>
+          TRENDS
         </Box>
       </Box>
     </Box>

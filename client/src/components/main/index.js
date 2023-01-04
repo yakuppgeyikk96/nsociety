@@ -5,16 +5,14 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from '../styled-components/AppBar';
+import DrawerHeader from '../styled-components/DrawerHeader';
 
 export default function PersistentDrawerLeft() {
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
   };
 
   return (
