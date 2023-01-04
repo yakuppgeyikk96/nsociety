@@ -10,5 +10,6 @@ export const savePost = async (post) => {
 export const getPostsByUserId = async (userId) => {
   const ObjectId = mongoose.Types.ObjectId
   const posts = await Post.find({ user: ObjectId(userId) })
+                          .populate('user', 'userName');
   return posts
 }

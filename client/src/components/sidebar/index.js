@@ -18,6 +18,7 @@ const SideBar = ({ handleDrawerClose, open }) => {
       variant="permanent"
       open={open}
       sx={{ flexGrow: '0' }}
+      anchor="left"
     >
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
