@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import HomePage from "../../pages/home";
 import LoginPage from "../../pages/login";
 import AuthContainer from "../auth-container";
@@ -12,6 +12,7 @@ const RouterTemplate = () => {
       </Route>
 
       <Route path="/" element={<ProtectedLayout />}>
+        <Route path="" element={<Navigate to="/home" />} />
         <Route path="home" element={<HomePage />} />
       </Route>
     </Routes>
